@@ -1,12 +1,26 @@
-import React from 'react';
-import { Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
 
-const Main = () => {
+import AppBackground from '../../components/AppBackground';
+import SearchInput from '../../components/SearchInput';
+import RepoList from './components/RepoList';
+
+import GET_REPOSITORIES from '../../services/graphql/getRepositories';
+
+const Main = props => {
+  const [searchInputText, changeSearchInputText] = useState('');
+
+  const { loading, error, data } = useQuery(GET_REPOSITORIES, {
+    variables: {
+      repoName: searchInputText,
+    },
+  });
+
   return (
-    <SafeAreaView>
-      <Text>some text</Text>
-    </SafeAreaView>
+    <AppBackground>
+      <SearchInput changeSearchInputText={changeSearchInputText} />
+      <RepoList data={data && data.search.nodes} />
+    </AppBackground>
   );
 };
 
