@@ -36,6 +36,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = simpleGithubClient/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = simpleGithubClient/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = simpleGithubClient/main.m; sourceTree = "<group>"; };
+		3988A9E1889F4C89A4592E30 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		48FA03E6DAB2CF4680DA6B1D /* Pods-simpleGithubClient-simpleGithubClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simpleGithubClient-simpleGithubClientTests.debug.xcconfig"; path = "Target Support Files/Pods-simpleGithubClient-simpleGithubClientTests/Pods-simpleGithubClient-simpleGithubClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5BFF80794CE531AC9049E5D6 /* libPods-simpleGithubClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-simpleGithubClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8F5DFC298B5CB27D665CED /* libPods-simpleGithubClient-simpleGithubClientTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-simpleGithubClient-simpleGithubClientTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +107,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		683E65813F454E3395D568ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3988A9E1889F4C89A4592E30 /* Ionicons.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +131,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				B1E611E2D75BB11FC6886707 /* Pods */,
+				683E65813F454E3395D568ED /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,7 +155,6 @@
 				48FA03E6DAB2CF4680DA6B1D /* Pods-simpleGithubClient-simpleGithubClientTests.debug.xcconfig */,
 				9F6D0FDBE10765B6AB38CC28 /* Pods-simpleGithubClient-simpleGithubClientTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
