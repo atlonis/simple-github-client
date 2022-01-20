@@ -6,7 +6,7 @@ import styles from './styles';
 
 const { container, input, searchIcon } = styles;
 
-const SearchInput = ({ changeSearchInputText }) => {
+const SearchInput = ({ onChangeText }) => {
   return (
     <View style={container}>
       <Icon style={searchIcon} name="ios-search" size={16} color="#fffffe" />
@@ -14,7 +14,7 @@ const SearchInput = ({ changeSearchInputText }) => {
         style={input}
         placeholder="Search"
         placeholderTextColor="#b8c1ec"
-        onChangeText={changeSearchInputText}
+        onChangeText={onChangeText}
       />
     </View>
   );

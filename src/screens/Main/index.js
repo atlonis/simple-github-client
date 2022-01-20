@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { useQuery } from '@apollo/client';
-import LottieView from 'lottie-react-native';
 
 import AppBackground from '../../components/AppBackground';
 import SearchInput from '../../components/SearchInput';
@@ -12,33 +11,60 @@ import GET_REPOSITORIES from '../../services/graphql/getRepositories';
 import styles from './styles';
 
 const Main = props => {
-  const [searchInputText, changeSearchInputText] = useState('');
-
+  const [searchInputText, setSearchInputText] = useState('');
+  const [cursor, setCursor] = useState(null);
+  const [isShowSpinner, setIsShowSpinner] = useState(true);
+  const [repos, setRepos] = useState([]);
   const { loading, error, data } = useQuery(GET_REPOSITORIES, {
     variables: {
       repoName: searchInputText,
+      cursor,
+    },
+    onCompleted: response => {
+      if (cursor) {
+        setRepos(prevState => [...prevState, ...response.search.nodes]);
+      } else {
+        setRepos(response?.search.nodes || []);
+      }
     },
     skip: !searchInputText,
   });
 
+  const onListEndReached = () => {
+    setIsShowSpinner(false);
+    if (data?.search.pageInfo.hasNextPage) {
+      setCursor(data.search.pageInfo.endCursor);
+    }
+  };
+
+  const onSearchInputChange = useCallback(
+    inputValue => {
+      setSearchInputText(inputValue);
+      setIsShowSpinner(true);
+      if (cursor) {
+        setCursor(null);
+      }
+    },
+    [cursor],
+  );
+
   return (
     <AppBackground>
-      <SearchInput changeSearchInputText={changeSearchInputText} />
-      {data && (
-        <Text style={styles.infoTextStyle}>
-          Repos found: {data.search.repositoryCount}
-        </Text>
-      )}
-      {loading ? (
+      <SearchInput onChangeText={onSearchInputChange} />
+      {isShowSpinner && loading ? (
         <Spinner />
       ) : (
         <>
           {error ? (
             <View>
-              <Text style={styles.infoTextStyle}>{error.message}</Text>
+              <Text style={styles.errorTextStyle}>{error.message}</Text>
             </View>
           ) : (
-            <RepoList data={data && data.search.nodes} />
+            <RepoList
+              data={repos}
+              onListEndReached={onListEndReached}
+              repositoryCount={data?.search.repositoryCount}
+            />
           )}
         </>
       )}

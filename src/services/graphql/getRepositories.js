@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const GET_REPOSITORIES = gql`
   query getRepositories($repoName: String!, $cursor: String) {
-    search(query: $repoName, type: REPOSITORY, first: 20, after: $cursor) {
+    search(query: $repoName, type: REPOSITORY, after: $cursor, first: 30) {
       repositoryCount
       nodes {
         ... on Repository {

@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  errorTextStyle: {
-    color: '#fffffe',
-    textAlign: 'center',
+  headerStyle: {
+    backgroundColor: '#121629',
+  },
+  headerTextStyle: {
     padding: 12,
+    textAlign: 'center',
+    color: '#fffffe',
   },
 });
 
