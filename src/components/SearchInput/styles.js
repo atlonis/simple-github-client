@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     backgroundColor: '#121629',
-    marginVertical: 15,
+    marginTop: 15,
     borderRadius: 10,
   },
   input: {
