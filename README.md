@@ -4,8 +4,8 @@
 
 ## Environments
 
-- `GITHUB_GRAPHQL_URI` - the HTTP port the service would listen on.
-- `GITHUB_TOKEN` - the HTTP port the service would listen on.
+- `GITHUB_GRAPHQL_URI` - URI of GraphQL server
+- `GITHUB_TOKEN` - Github personal access token
 
 ## Project structure
 
